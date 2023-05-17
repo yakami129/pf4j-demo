@@ -18,7 +18,7 @@ public class PluginMain {
 
         // 初始化plugin的配置
         PluginProperties pluginProperties = new PluginProperties();
-        final String pluginsUrl = PluginMain.class.getResource("/plugins").toString();
+        final String pluginsUrl =  ClassLoader.getSystemResource("plugins").getPath();
         log.info("pluginsUrl:{}", pluginsUrl);
         pluginProperties.setPluginPath(pluginsUrl);
 
