@@ -1,4 +1,5 @@
 dependencies {
+    compile 'cn.hutool:hutool-all:5.8.18'
     compileOnly project(":pf4j-api")
     compileOnly 'org.pf4j:pf4j:3.9.0'
     annotationProcessor "org.pf4j:pf4j:3.9.0"

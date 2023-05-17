@@ -1,5 +1,10 @@
+group 'io.github.yakami129'
+version '1.0.0'
+
 subprojects {
+
     apply plugin: 'java'
+    
     repositories {
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/google' }
@@ -8,8 +13,22 @@ subprojects {
         mavenLocal()
         mavenCentral()
     }
+
+    /**
+     * clean 命令时删除 out 目录
+     */
+    task cleanOutDir(type: Delete) {
+        delete rootProject.buildDir.path + '/plugins'
+    }
+    tasks.clean.dependsOn(cleanOutDir)
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
 }
+
+
 
 // plugin location
 ext.pluginsDir = rootProject.buildDir.path + '/plugins'
-task build(dependsOn: [':pf4j-demo:uberjar'])

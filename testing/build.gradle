@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+}
+
+group 'io.github.yakami129'
+version '1.0.0'
+
+dependencies {
+    implementation project(":pf4j-api")
+    implementation "org.apache.commons:commons-lang3:3.12.0"
+    implementation "org.apache.commons:commons-collections4:4.4"
+    implementation "org.pf4j:pf4j:3.9.0"
+    implementation 'org.slf4j:slf4j-log4j12:1.7.30'
+    annotationProcessor "org.projectlombok:lombok:1.18.24"
+    compile "org.projectlombok:lombok:1.18.24"
+    testAnnotationProcessor "org.projectlombok:lombok:1.18.24"
+    testCompile "org.projectlombok:lombok:1.18.24"
+}
+
+ext.mainClassName = 'io.github.yakami129.testing.PluginMain'
+
+task uberjar(type: Jar, dependsOn: ['compileJava']) {
+    zip64 true
+    from configurations.runtimeClasspath.asFileTree.files.collect {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+        zipTree(it)
+    }
+    from files(sourceSets.main.output.classesDirs)
+    from files(sourceSets.main.resources)
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    archiveBaseName = "${project.name}-plugin-demo"
+    archiveClassifier = "uberjar"
+}
+
+test {
+    useJUnitPlatform()
+}

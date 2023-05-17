@@ -10,7 +10,7 @@ subprojects {
     }
 
     task plugin(type: Jar) {
-        archiveBaseName = "plugin-${pluginId}"
+        archiveBaseName = "${pluginId}"
         into('classes') {
             with jar
         }

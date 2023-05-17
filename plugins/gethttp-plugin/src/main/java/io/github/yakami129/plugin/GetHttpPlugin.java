@@ -1,5 +1,6 @@
 package io.github.yakami129.plugin;
 
+import cn.hutool.http.HttpUtil;
 import io.github.yakami129.pf4j.api.GetHttp;
 import io.github.yakami129.pf4j.api.dto.GetHttpRequestDTO;
 import org.pf4j.Extension;
@@ -30,11 +31,11 @@ public class GetHttpPlugin extends Plugin {
     }
 
     @Extension
-    public static class GetHttpPluginPluginImpl implements GetHttp {
-
+    public static class GetHttpPluginImpl implements GetHttp {
         @Override
         public String get(GetHttpRequestDTO getHttpRequestDTO) {
-            return null;
+            final String responseBody = HttpUtil.get(getHttpRequestDTO.getUrl());
+            return responseBody;
         }
     }
 
