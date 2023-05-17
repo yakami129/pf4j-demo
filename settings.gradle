@@ -1,0 +1,5 @@
+rootProject.name = 'pf4j-demo'
+include 'pf4j-api'
+include 'plugins'
+include 'plugins:gethttp-plugin'
+

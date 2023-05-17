@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+group 'io.github.yakami129.pf4j'
+version '1.0.0'
+
+dependencies {
+    compileOnly 'org.pf4j:pf4j:3.9.0'
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,15 @@
+subprojects {
+    apply plugin: 'java'
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/spring' }
+        maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+// plugin location
+ext.pluginsDir = rootProject.buildDir.path + '/plugins'
+task build(dependsOn: [':pf4j-demo:uberjar'])
