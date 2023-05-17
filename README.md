@@ -78,8 +78,10 @@ pluginProvider=yakami129
 pluginDependencies=
 ```
 - 设置disabled.txt和enabled.txt
-  - disabled.txt：用于控制哪些插件默认是关闭的
-  - enabled.txt：用于控制哪些插件默认是开启的
+```
+disabled.txt：用于控制哪些插件默认是关闭的
+enabled.txt：用于控制哪些插件默认是开启的
+```
     
 ###（3）在项目根目录打包插件
 
